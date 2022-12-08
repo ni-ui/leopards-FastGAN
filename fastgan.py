@@ -20,10 +20,18 @@ import random
 import numpy as np
 from IPython.display import HTML
 
+#LINK FOR BACKGROUND IMAGES
+
+#https://drive.google.com/drive/folders/1HqUJ0UMOelk1jokhCYs3cFvbbFWB3PP-?usp=sharing
+
+#LINK FOR LEOPARD IMAGES WITH BACKGROUNDS REMOVED
+
+#https://drive.google.com/drive/folders/1EYrLJA4Z1v0nclAMTYrlY_Dec7k4OttU?usp=share_link
+
 #CODE FOR GENERATING OVERLAYS
 
 background_imgs = glob.glob('/content/drive/MyDrive/backgrounds/*')
-overlays =  glob.glob('/content/drive/MyDrive/Group19_DbandAnnotations/Leopard_bg_remove/*')
+overlays =  glob.glob('/content/drive/MyDrive/Leopard_bg_remove/*')
 print(len(overlays))
 
 for idx in range(len(overlays)):
@@ -47,13 +55,13 @@ for idx in range(len(overlays)):
     background[0:h, 0:w] = added_image
 
   # display the image
-    cv2.imwrite('/content/drive/My Drive/leopard_new_2/'+str(idx)+"_"+str(k)+".png" , background)
+    cv2.imwrite('/content/drive/My Drive/leopard_overlays/'+str(idx)+"_"+str(k)+".png" , background)
 
 import glob
-imgs = glob.glob('/content/drive/MyDrive/leopard_new_2/*')
+imgs = glob.glob('/content/drive/MyDrive/leopard_overlays/*')
 print(len(imgs))
 
 !ls '/content/FastGAN-pytorch'
 
-!python '/content/FastGAN-pytorch/train.py' --path '/content/drive/MyDrive/leopard_new_2' --im_size 256 --iter 2000
+!python '/content/FastGAN-pytorch/train.py' --path '/content/drive/MyDrive/leopard_overlays' --im_size 256 --iter 2000
 
